@@ -12,9 +12,13 @@ package com.bilheteria.bilheteria;
 public class Bilheteria {
     public static void main(String[] args) {
         // Criar uma instância da classe Estado
-        Estado estado = new Estado();
+//        Estado estado = new Estado();
+//
+//        // Chamar o método responsável por obter os estados
+//        estado.obterEstados();
 
-        // Chamar o método responsável por obter os estados
-        estado.obterEstados();
+       var home = new FormHome();
+       
+       home.setVisible(true);
     }
 }
