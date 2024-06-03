@@ -11,9 +11,10 @@ import java.util.ArrayList;
 public class FormListaEstados extends javax.swing.JFrame {
     
     public ArrayList<Estado> linhas = null;
+    public static final String API_URL = "https://api-eventos-unicv.azurewebsites.net/api/estados";
     
     public FormListaEstados() {
-        this.linhas = carregarLinhas();
+        this.linhas = Estado.carregarEstadosFromAPI(API_URL);
         initComponents();
     }
 
