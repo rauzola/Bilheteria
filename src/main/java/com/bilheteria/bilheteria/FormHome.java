@@ -1,13 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.bilheteria.bilheteria;
 
 /**
  *
- * @author Laboratorio
+ * @author raul_
  */
+
 public class FormHome extends javax.swing.JFrame {
 
     /**
@@ -15,6 +12,7 @@ public class FormHome extends javax.swing.JFrame {
      */
     public FormHome() {
         initComponents();
+        var x = java.awt.Frame.MAXIMIZED_BOTH;
     }
 
     /**
@@ -26,23 +24,36 @@ public class FormHome extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenuBar1 = new javax.swing.JMenuBar();
-        OnclickCadastros = new javax.swing.JMenu();
-        OnclickMetodosdePagamento = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+
+        jMenuItem2.setText("jMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sistema Bilheteria");
 
-        OnclickCadastros.setText("Cadastros");
+        jMenu1.setText("Cadastros");
 
-        OnclickMetodosdePagamento.setText("Metodos de pagamento");
-        OnclickMetodosdePagamento.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem1.setText("Métodos de pagamento");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OnclickMetodosdePagamentoActionPerformed(evt);
+                jMenuItem1ActionPerformed(evt);
             }
         });
-        OnclickCadastros.add(OnclickMetodosdePagamento);
+        jMenu1.add(jMenuItem1);
 
-        jMenuBar1.add(OnclickCadastros);
+        jMenuItem3.setText("Estados");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem3);
+
+        jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
 
@@ -54,20 +65,23 @@ public class FormHome extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
+            .addGap(0, 280, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void OnclickMetodosdePagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickMetodosdePagamentoActionPerformed
-        // TODO add your handling code here:
-        
-        System.out.println("clicou no Metodos de pagamento");
-        
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         var form = new FormListaMetodosPagamento();
+        form.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         form.setVisible(true);
-    }//GEN-LAST:event_OnclickMetodosdePagamentoActionPerformed
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        var form = new FormListaEstados();
+        form.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        form.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -105,8 +119,10 @@ public class FormHome extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu OnclickCadastros;
-    private javax.swing.JMenuItem OnclickMetodosdePagamento;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     // End of variables declaration//GEN-END:variables
 }
