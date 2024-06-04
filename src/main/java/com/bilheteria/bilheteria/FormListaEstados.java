@@ -1,38 +1,24 @@
 package com.bilheteria.bilheteria;
 
-import com.bilheteria.bilheteria.Classes.Estado;
+import com.bilheteria.bilheteria.classes.Estado;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
-/**
+/**s
  *
  * @author raul_
  */
 
 public class FormListaEstados extends javax.swing.JFrame {
-    
+
     public ArrayList<Estado> linhas = null;
-    public static final String API_URL = "https://api-eventos-unicv.azurewebsites.net/api/estados";
-    
+
     public FormListaEstados() {
-        this.linhas = Estado.carregarEstadosFromAPI(API_URL);
         initComponents();
+        this.linhas = Estado.carregarEstados();
+        customizarComponentes();
     }
 
-    private ArrayList<Estado> carregarLinhas() {
-        // futuramente este método irá conectar na API e trazer os dados
-        // atualmente vamos trabalhar com dados fixos
-        ArrayList<Estado> minhaLista = new ArrayList<Estado>();
-
-        minhaLista.add(Estado.criar(1, "São Paulo", "SP"));
-        minhaLista.add(Estado.criar(2, "Paraná", "PR"));
-        minhaLista.add(Estado.criar(3, "Rio Grande do Sul", "RS"));
-        minhaLista.add(Estado.criar(4, "Rio Grande do Norte", "RN"));
-        minhaLista.add(Estado.criar(5, "Santa Catarina", "AC"));
-        minhaLista.add(Estado.criar(6, "Acre", "AC"));
-        minhaLista.add(Estado.criar(7, "Minas Gerais", "MG"));
-
-        return minhaLista;
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -61,13 +47,13 @@ public class FormListaEstados extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Id", "Estado", "Sigla"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -117,6 +103,14 @@ public class FormListaEstados extends javax.swing.JFrame {
         form.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+     private void customizarComponentes() {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0); // Limpar tabela
+
+        for (Estado estado : linhas) {
+            model.addRow(new Object[]{estado.id, estado.nome, estado.sigla});
+        }
+    }
     /**
      * @param args the command line arguments
      */
