@@ -4,7 +4,7 @@ import com.bilheteria.bilheteria.classes.Estado;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
-/**s
+/**
  *
  * @author raul_
  */
