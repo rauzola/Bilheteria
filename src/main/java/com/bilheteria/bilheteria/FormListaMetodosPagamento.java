@@ -72,7 +72,7 @@ public class FormListaMetodosPagamento extends javax.swing.JFrame {
         jButton1.setText("Novo");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                OnclickNovo(evt);
             }
         });
 
@@ -148,11 +148,11 @@ public class FormListaMetodosPagamento extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void OnclickNovo(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickNovo
         var form = new FormGerenciarMetodosPagamento();
         form.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         form.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_OnclickNovo
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // criando o modelo de dados [colunas]

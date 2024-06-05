@@ -42,14 +42,14 @@ public class FormGerenciarMetodosPagamento extends javax.swing.JFrame {
         jButton1.setText("Fechar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                OnclickFechar(evt);
             }
         });
 
         jButton2.setText("Salvar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                OnclickSalvar(evt);
             }
         });
 
@@ -122,7 +122,7 @@ public class FormGerenciarMetodosPagamento extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void OnclickSalvar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickSalvar
         // mapear os dados da tela
         dados.nome = textNome.getText();
         
@@ -135,11 +135,11 @@ public class FormGerenciarMetodosPagamento extends javax.swing.JFrame {
             // atualizar um registro
             // Api - PUT
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_OnclickSalvar
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void OnclickFechar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickFechar
         setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_OnclickFechar
 
     /**
      * @param args the command line arguments

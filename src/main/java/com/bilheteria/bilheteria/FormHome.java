@@ -40,7 +40,7 @@ public class FormHome extends javax.swing.JFrame {
         jMenuItem1.setText("Métodos de pagamento");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                OnclickMetodosDePagamento(evt);
             }
         });
         jMenu1.add(jMenuItem1);
@@ -48,7 +48,7 @@ public class FormHome extends javax.swing.JFrame {
         jMenuItem3.setText("Estados");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                OnclickEstados(evt);
             }
         });
         jMenu1.add(jMenuItem3);
@@ -71,17 +71,17 @@ public class FormHome extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void OnclickMetodosDePagamento(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickMetodosDePagamento
         var form = new FormListaMetodosPagamento();
         form.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         form.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_OnclickMetodosDePagamento
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void OnclickEstados(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickEstados
         var form = new FormListaEstados();
         form.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         form.setVisible(true);
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_OnclickEstados
 
     /**
      * @param args the command line arguments
