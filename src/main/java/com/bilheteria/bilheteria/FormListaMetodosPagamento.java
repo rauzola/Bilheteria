@@ -1,6 +1,6 @@
 package com.bilheteria.bilheteria;
 
-import com.bilheteria.bilheteria.Classes.MetodoPagamento;
+import com.bilheteria.bilheteria.classes.MetodoPagamento;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -11,27 +11,11 @@ import javax.swing.table.DefaultTableModel;
 
 public class FormListaMetodosPagamento extends javax.swing.JFrame {
 
-    private ArrayList<MetodoPagamento> linhas = null;
+   public ArrayList<MetodoPagamento> linhas = null;
 
     public FormListaMetodosPagamento() {
-        this.linhas = carregarLinhas();
         initComponents();
-    }
-
-    private ArrayList<MetodoPagamento> carregarLinhas() {
-        // futuramente este método irá conectar na API e trazer os dados
-        // atualmente vamos trabalhar com dados fixos
-        ArrayList<MetodoPagamento> minhaLista = new ArrayList<MetodoPagamento>();
-
-        minhaLista.add(MetodoPagamento.criar(1, "PIX"));
-        minhaLista.add(MetodoPagamento.criar(2, "Débito"));
-        minhaLista.add(MetodoPagamento.criar(3, "Crébito"));
-        minhaLista.add(MetodoPagamento.criar(4, "Dinheiro"));
-        minhaLista.add(MetodoPagamento.criar(5, "Transferência"));
-        minhaLista.add(MetodoPagamento.criar(6, "Boleto"));
-        minhaLista.add(MetodoPagamento.criar(7, "Cheque"));
-
-        return minhaLista;
+        this.linhas = MetodoPagamento.carregarMetodos();
     }
 
     /**
@@ -155,17 +139,18 @@ public class FormListaMetodosPagamento extends javax.swing.JFrame {
     }//GEN-LAST:event_OnclickNovo
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // criando o modelo de dados [colunas]
+        // criando o modelo de dados [colunas]l
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("id");
         modelo.addColumn("nome");
 
         // popular o modelo de dados [linhas]
-        for (MetodoPagamento metodo : linhas) {
-            modelo.addRow(new Object[]{ metodo.id, metodo.nome });
-        }
+        // popular o modelo de dados [linhas]
+    for (MetodoPagamento metodo : linhas) {
+        modelo.addRow(new Object[]{ metodo.id, metodo.nome });
+    }
         
-        this.tabelaDados.setModel(modelo);
+    this.tabelaDados.setModel(modelo);
     }//GEN-LAST:event_formWindowOpened
 
     /**

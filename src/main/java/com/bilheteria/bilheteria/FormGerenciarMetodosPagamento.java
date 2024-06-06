@@ -1,6 +1,6 @@
 package com.bilheteria.bilheteria;
 
-import com.bilheteria.bilheteria.Classes.MetodoPagamento;
+import com.bilheteria.bilheteria.classes.MetodoPagamento;
 
 /**
  *
