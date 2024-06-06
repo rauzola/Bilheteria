@@ -11,11 +11,12 @@ import javax.swing.table.DefaultTableModel;
 
 public class FormListaMetodosPagamento extends javax.swing.JFrame {
 
-   public ArrayList<MetodoPagamento> linhas = null;
+    public ArrayList<MetodoPagamento> linhas = null;
 
+    // Construtor da classe
     public FormListaMetodosPagamento() {
-        initComponents();
-        this.linhas = MetodoPagamento.carregarMetodos();
+        initComponents(); // Inicializa os componentes da interface gráfica
+        this.linhas = MetodoPagamento.carregarMetodos(); // Carrega os métodos de pagamento
     }
 
     /**
@@ -132,30 +133,33 @@ public class FormListaMetodosPagamento extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // Método executado ao clicar no botão "Novo"
     private void OnclickNovo(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickNovo
-        var form = new FormGerenciarMetodosPagamento();
-        form.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        form.setVisible(true);
+        var form = new FormGerenciarMetodosPagamento(); // Cria um novo formulário para gerenciar métodos de pagamento
+        form.setDefaultCloseOperation(DISPOSE_ON_CLOSE); // Define a ação de fechamento do formulário
+        form.setVisible(true); // Torna o formulário visível
     }//GEN-LAST:event_OnclickNovo
 
+    // Método executado quando a janela é aberta
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // criando o modelo de dados [colunas]l
-        DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("id");
-        modelo.addColumn("nome");
 
-        // popular o modelo de dados [linhas]
-        // popular o modelo de dados [linhas]
-    for (MetodoPagamento metodo : linhas) {
-        modelo.addRow(new Object[]{ metodo.id, metodo.nome });
-    }
-        
-    this.tabelaDados.setModel(modelo);
+        // Criando o modelo de dados para a tabela
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("id"); // Adiciona a coluna "id"
+        modelo.addColumn("nome"); // Adiciona a coluna "nome"
+
+        // Populando o modelo de dados com as linhas
+        for (MetodoPagamento metodo : linhas) {
+            modelo.addRow(new Object[]{metodo.id, metodo.nome}); // Adiciona uma linha para cada método de pagamento
+        }
+
+        this.tabelaDados.setModel(modelo); // Define o modelo de dados da tabela
     }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
      */
+    // Método principal para iniciar a aplicação
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

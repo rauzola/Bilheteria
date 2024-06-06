@@ -13,9 +13,16 @@ public class FormListaEstados extends javax.swing.JFrame {
 
     public ArrayList<Estado> linhas = null;
 
+    // Construtor da classe
     public FormListaEstados() {
+
+        // Inicializa os componentes da interface gráfica
         initComponents();
+
+        // Carrega os estados utilizando o método carregarEstados da classe Estado
         this.linhas = Estado.carregarEstados();
+
+        // Chama o método para personalizar os componentes
         customizarComponentes();
     }
 
@@ -97,23 +104,28 @@ public class FormListaEstados extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // Método executado ao clicar no botão "Novo"
     private void OnclickNovo(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickNovo
-        var form = new FormGerenciarEstados();
-        form.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        form.setVisible(true);
+        var form = new FormGerenciarEstados(); // Cria um novo formulário para gerenciar estados
+        form.setDefaultCloseOperation(DISPOSE_ON_CLOSE); // Define a ação de fechamento do formulário
+        form.setVisible(true); // Torna o formulário visível
     }//GEN-LAST:event_OnclickNovo
 
-     private void customizarComponentes() {
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        model.setRowCount(0); // Limpar tabela
+    // Método para personalizar os componentes
+    private void customizarComponentes() {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel(); // Obtém o modelo da tabela
+        model.setRowCount(0); // Limpa a tabela
 
+        // Adiciona os dados dos estados no modelo da tabela
         for (Estado estado : linhas) {
-            model.addRow(new Object[]{estado.id, estado.nome, estado.sigla});
+            model.addRow(new Object[]{estado.id, estado.nome, estado.sigla}); // Adiciona uma linha para cada estado
         }
     }
+
     /**
      * @param args the command line arguments
      */
+    // Método principal para iniciar a aplicação
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
