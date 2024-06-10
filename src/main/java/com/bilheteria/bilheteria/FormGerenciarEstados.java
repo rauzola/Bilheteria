@@ -1,6 +1,7 @@
 package com.bilheteria.bilheteria;
 
 import com.bilheteria.bilheteria.classes.Estado;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -129,10 +130,31 @@ public class FormGerenciarEstados extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void OnclickSalvar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickSalvar
-       
+
         // Pegando os valores digitados nos campos de texto
         String sigla = textSigla.getText();
         String nome = textNome.getText();
+
+        // Verificando se a sigla e o nome estão vazios
+        if (sigla.isEmpty() || nome.isEmpty()) {
+            // Exibir mensagem de erro e não salvar
+            JOptionPane.showMessageDialog(this, "A sigla e o nome não podem estar vazios.");
+            return;
+        }
+
+        // Verificando se a sigla possui exatamente 2 caracteres e são letras
+        if (sigla.length() != 2 || !sigla.matches("[a-zA-Z]+")) {
+            // Exibir mensagem de erro e não salvar
+            JOptionPane.showMessageDialog(this, "A sigla deve ter exatamente 2 letras.");
+            return;
+        }
+
+        // Verificando se o nome contém apenas letras e tem no máximo 24 caracteres
+        if (!nome.matches("[a-zA-Z]+") || nome.length() > 24) {
+            // Exibir mensagem de erro e não salvar
+            JOptionPane.showMessageDialog(this, "O nome deve ter apenas letras e no máximo 24 caracteres.");
+            return;
+        }
 
         // Exibindo os valores no console
         System.out.println("Sigla: " + sigla + "\nNome: " + nome);
@@ -141,7 +163,6 @@ public class FormGerenciarEstados extends javax.swing.JFrame {
         Estado estado = new Estado();
         estado.enviarEstadoPost(sigla, nome);
 
-        
         var form = new FormListaEstados();
         form.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         form.setVisible(true);
@@ -152,13 +173,11 @@ public class FormGerenciarEstados extends javax.swing.JFrame {
 
     private void OnclickFechar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickFechar
         // TODO add your handling code here:
-        
-        
-        
+
         var form = new FormListaEstados();
         form.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         form.setVisible(true);
-        
+
         System.out.println("OnclickFechar");
 
         this.dispose(); // Fechar
