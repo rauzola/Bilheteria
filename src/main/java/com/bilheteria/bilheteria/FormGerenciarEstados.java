@@ -129,7 +129,7 @@ public class FormGerenciarEstados extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void OnclickSalvar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickSalvar
-
+       
         // Pegando os valores digitados nos campos de texto
         String sigla = textSigla.getText();
         String nome = textNome.getText();
@@ -137,19 +137,31 @@ public class FormGerenciarEstados extends javax.swing.JFrame {
         // Exibindo os valores no console
         System.out.println("Sigla: " + sigla + "\nNome: " + nome);
 
-        // Enviando os dados para a API
+        // Enviando o estado para a API
         Estado estado = new Estado();
         estado.enviarEstadoPost(sigla, nome);
 
-        System.out.println("OnclickSalvar");
+        
+        var form = new FormListaEstados();
+        form.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        form.setVisible(true);
 
+        System.out.println("OnclickSalvar");
+        this.dispose(); // Fechar
     }//GEN-LAST:event_OnclickSalvar
 
     private void OnclickFechar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickFechar
         // TODO add your handling code here:
+        
+        
+        
+        var form = new FormListaEstados();
+        form.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        form.setVisible(true);
+        
         System.out.println("OnclickFechar");
 
-        this.dispose();
+        this.dispose(); // Fechar
 
     }//GEN-LAST:event_OnclickFechar
 

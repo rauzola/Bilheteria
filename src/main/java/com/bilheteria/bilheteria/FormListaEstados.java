@@ -109,6 +109,8 @@ public class FormListaEstados extends javax.swing.JFrame {
         var form = new FormGerenciarEstados(); // Cria um novo formulário para gerenciar estados
         form.setDefaultCloseOperation(DISPOSE_ON_CLOSE); // Define a ação de fechamento do formulário
         form.setVisible(true); // Torna o formulário visível
+        
+        this.dispose();
     }//GEN-LAST:event_OnclickNovo
 
     // Método para personalizar os componentes
@@ -117,6 +119,19 @@ public class FormListaEstados extends javax.swing.JFrame {
         model.setRowCount(0); // Limpa a tabela
 
         // Adiciona os dados dos estados no modelo da tabela
+        for (Estado estado : linhas) {
+            model.addRow(new Object[]{estado.id, estado.nome, estado.sigla}); // Adiciona uma linha para cada estado
+        }
+    }
+
+    void recarregarEstados() {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel(); // Obtém o modelo da tabela
+        model.setRowCount(0); // Limpa a tabela
+
+        // Recarrega os estados utilizando o método carregarEstados da classe Estado
+        this.linhas = Estado.carregarEstados();
+
+        // Adiciona os dados dos estados recarregados no modelo da tabela
         for (Estado estado : linhas) {
             model.addRow(new Object[]{estado.id, estado.nome, estado.sigla}); // Adiciona uma linha para cada estado
         }

@@ -75,12 +75,16 @@ public class FormHome extends javax.swing.JFrame {
         var form = new FormListaMetodosPagamento();
         form.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         form.setVisible(true);
+        
+        // this.dispose(); // Fechar
     }//GEN-LAST:event_OnclickMetodosDePagamento
 
     private void OnclickEstados(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickEstados
         var form = new FormListaEstados();
         form.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         form.setVisible(true);
+        
+        // this.dispose(); // Fechar
     }//GEN-LAST:event_OnclickEstados
 
     /**

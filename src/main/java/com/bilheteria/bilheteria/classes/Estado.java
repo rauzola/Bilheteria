@@ -13,6 +13,7 @@ import java.io.OutputStream;
  *
  * @author raul_
  */
+
 public class Estado {
 
     public int id;
