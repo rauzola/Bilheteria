@@ -4,7 +4,6 @@ package com.bilheteria.bilheteria;
  *
  * @author raul_
  */
-
 public class FormGerenciarEstados extends javax.swing.JFrame {
 
     /**
@@ -37,8 +36,18 @@ public class FormGerenciarEstados extends javax.swing.JFrame {
         setTitle("Gerenciar Estados");
 
         jButton1.setText("Fechar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OnclickFechar(evt);
+            }
+        });
 
         jButton2.setText("Salvar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OnclickSalvar(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados"));
 
@@ -116,6 +125,27 @@ public class FormGerenciarEstados extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void OnclickSalvar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickSalvar
+
+        // Pegando os valores digitados nos campos de texto
+        String sigla = textSigla.getText();
+        String nome = textNome.getText();
+
+        // Exibindo os valores no console
+        System.out.println("Sigla: " + sigla + "\nNome: " + nome);
+
+        System.out.println("OnclickSalvar");
+
+    }//GEN-LAST:event_OnclickSalvar
+
+    private void OnclickFechar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickFechar
+        // TODO add your handling code here:
+        System.out.println("OnclickFechar");
+
+        this.dispose();
+
+    }//GEN-LAST:event_OnclickFechar
 
     /**
      * @param args the command line arguments
