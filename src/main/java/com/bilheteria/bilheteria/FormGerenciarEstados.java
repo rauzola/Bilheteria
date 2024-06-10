@@ -1,5 +1,7 @@
 package com.bilheteria.bilheteria;
 
+import com.bilheteria.bilheteria.classes.Estado;
+
 /**
  *
  * @author raul_
@@ -134,6 +136,10 @@ public class FormGerenciarEstados extends javax.swing.JFrame {
 
         // Exibindo os valores no console
         System.out.println("Sigla: " + sigla + "\nNome: " + nome);
+
+        // Enviando os dados para a API
+        Estado estado = new Estado();
+        estado.enviarEstadoPost(sigla, nome);
 
         System.out.println("OnclickSalvar");
 
