@@ -138,6 +138,8 @@ public class FormListaMetodosPagamento extends javax.swing.JFrame {
         var form = new FormGerenciarMetodosPagamento(); // Cria um novo formulário para gerenciar métodos de pagamento
         form.setDefaultCloseOperation(DISPOSE_ON_CLOSE); // Define a ação de fechamento do formulário
         form.setVisible(true); // Torna o formulário visível
+        
+        this.dispose();
     }//GEN-LAST:event_OnclickNovo
 
     // Método executado quando a janela é aberta

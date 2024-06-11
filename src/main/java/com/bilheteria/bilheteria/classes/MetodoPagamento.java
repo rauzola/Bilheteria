@@ -2,6 +2,7 @@ package com.bilheteria.bilheteria.classes;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -93,5 +94,58 @@ public class MetodoPagamento {
         }
         // Retornar a lista de métodos de pagamento
         return metodoPagamento;
+    }
+
+    public void enviarMetodosPost(String nome) {
+        try {
+            // URL da API de métodos de pagamento
+            URL url = new URL("https://api-eventos-unicv.azurewebsites.net/api/metodos-pagamento");
+
+            // Abrir uma conexão HTTP com a URL
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+
+            // Definir o método de requisição como POST
+            con.setRequestMethod("POST");
+
+            // Definir o tipo de mídia como application/json
+            con.setRequestProperty("Content-Type", "application/json");
+
+            // Habilitar envio de dados
+            con.setDoOutput(true);
+
+            // Criar o corpo da requisição JSON
+            JSONObject jsonBody = new JSONObject();
+            jsonBody.put("name", nome);
+
+            // Obter o OutputStream da conexão
+            OutputStream os = con.getOutputStream();
+            os.write(jsonBody.toString().getBytes());
+            os.flush();
+            os.close();
+
+            // Obter o código de resposta da requisição
+            int responseCode = con.getResponseCode();
+
+            // Ler a resposta da API
+            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+
+            // Verificar se a resposta é HTTP CREATED (código 201)
+            if (responseCode == HttpURLConnection.HTTP_CREATED) {
+                System.out.println("Metodo de Pagamento criado com sucesso!");
+            } else {
+                // Se a resposta não for 201, exibir o código de resposta e o corpo da resposta
+                System.out.println(responseCode);
+                System.out.println("Resposta da API: " + response.toString());
+            }
+        } catch (Exception e) {
+            // Tratar exceções e exibir a stack trace
+            e.printStackTrace();
+        }
     }
 }

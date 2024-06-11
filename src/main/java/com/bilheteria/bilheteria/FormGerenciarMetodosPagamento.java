@@ -1,6 +1,9 @@
 package com.bilheteria.bilheteria;
 
+import com.bilheteria.bilheteria.classes.Estado;
 import com.bilheteria.bilheteria.classes.MetodoPagamento;
+import javax.swing.JOptionPane;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
 /**
  *
@@ -10,12 +13,13 @@ import com.bilheteria.bilheteria.classes.MetodoPagamento;
 public class FormGerenciarMetodosPagamento extends javax.swing.JFrame {
 
     private MetodoPagamento dados;
+
     /**
      * Creates new form FormGerenciarMetodosPagamento
      */
     public FormGerenciarMetodosPagamento() {
         initComponents();
-        
+
         dados = new MetodoPagamento();
     }
 
@@ -123,22 +127,47 @@ public class FormGerenciarMetodosPagamento extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void OnclickSalvar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickSalvar
-        // mapear os dados da tela
-        dados.nome = textNome.getText();
-        
-        // decidir o que fazer
-        if (dados.id == 0){
-            // criar um registro novo
-            // Api - POST
+
+        // Pegando os valores digitados nos campos de texto
+        String nome = textNome.getText();
+
+        // Verificando se o nome esta vazio
+        if (nome.isEmpty()) {
+            // Exibir mensagem de erro e não salvar
+            JOptionPane.showMessageDialog(this, "O nome não podem estar vazio.");
+            return;
         }
-        else {
-            // atualizar um registro
-            // Api - PUT
+
+        // Verificando se o nome contém apenas letras e tem no máximo 24 caracteres
+        if (!nome.matches("[a-zA-Z]+") || nome.length() > 24) {
+            // Exibir mensagem de erro e não salvar
+            JOptionPane.showMessageDialog(this, "O nome deve ter apenas letras e no máximo 24 caracteres.");
+            return;
         }
+
+        // Exibindo os valores no console
+        System.out.println("Nome: " + nome);
+
+        // Enviando o estado para a API
+        MetodoPagamento MetodoPagamento = new MetodoPagamento();
+        MetodoPagamento.enviarMetodosPost(nome);
+
+        var form = new FormListaMetodosPagamento();
+        form.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        form.setVisible(true);
+
+        System.out.println("OnclickSalvar");
+        this.dispose(); // Fechar
     }//GEN-LAST:event_OnclickSalvar
 
     private void OnclickFechar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickFechar
-        setVisible(false);
+        var form = new FormListaMetodosPagamento();
+        form.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        form.setVisible(true);
+
+        System.out.println("OnclickFechar");
+
+        this.dispose(); // Fechar
     }//GEN-LAST:event_OnclickFechar
 
     /**
