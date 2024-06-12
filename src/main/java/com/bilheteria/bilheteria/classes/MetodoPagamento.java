@@ -13,7 +13,6 @@ import org.json.JSONObject;
  *
  * @author raul_
  */
-
 public class MetodoPagamento {
 
     public int id;
@@ -96,7 +95,9 @@ public class MetodoPagamento {
         return metodoPagamento;
     }
 
-    public void enviarMetodosPost(String nome) {
+    public boolean enviarMetodosPost(String nome) {
+        boolean sucesso = true;
+
         try {
             // URL da API de métodos de pagamento
             URL url = new URL("https://api-eventos-unicv.azurewebsites.net/api/metodos-pagamento");
@@ -136,16 +137,25 @@ public class MetodoPagamento {
             in.close();
 
             // Verificar se a resposta é HTTP CREATED (código 201)
-            if (responseCode == HttpURLConnection.HTTP_CREATED) {
-                System.out.println("Metodo de Pagamento criado com sucesso!");
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                System.out.println("Método de Pagamento criado com sucesso!");
+            } else if (responseCode == HttpURLConnection.HTTP_BAD_REQUEST) {
+                // Se a resposta for 400, exibir a mensagem de erro
+                System.out.println("Erro: Já existe um método de pagamento cadastrado com este nome");
+                sucesso = false;
             } else {
-                // Se a resposta não for 201, exibir o código de resposta e o corpo da resposta
+                // Se a resposta não for 201 nem 400, exibir o código de resposta e o corpo da resposta
                 System.out.println(responseCode);
                 System.out.println("Resposta da API: " + response.toString());
+                sucesso = false;
             }
         } catch (Exception e) {
             // Tratar exceções e exibir a stack trace
+            sucesso = false;
             e.printStackTrace();
         }
+
+        return sucesso;
     }
+
 }

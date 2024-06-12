@@ -127,44 +127,49 @@ public class FormGerenciarMetodosPagamento extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void OnclickSalvar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickSalvar
+    // Pegando os valores digitados nos campos de texto
+    String nome = textNome.getText();
 
-        // Pegando os valores digitados nos campos de texto
-        String nome = textNome.getText();
+    // Verificando se o nome está vazio
+    if (nome.isEmpty()) {
+        // Exibir mensagem de erro e não salvar
+        JOptionPane.showMessageDialog(this, "O nome não pode estar vazio.");
+        return;
+    }
 
-        // Verificando se o nome esta vazio
-        if (nome.isEmpty()) {
-            // Exibir mensagem de erro e não salvar
-            JOptionPane.showMessageDialog(this, "O nome não podem estar vazio.");
-            return;
-        }
+    // Verificando se o nome tem menos de 3 caracteres
+    if (nome.length() < 3) {
+        // Exibir mensagem de erro e não salvar
+        JOptionPane.showMessageDialog(this, "O nome não pode ter menos de 3 caracteres");
+        return;
+    }
+    
+    // Verificando se o nome contém apenas letras e tem no máximo 24 caracteres
+    if (!nome.matches("[a-zA-Z ]+") || nome.length() > 24) {
+        // Exibir mensagem de erro e não salvar
+        JOptionPane.showMessageDialog(this, "O nome deve ter apenas letras e no máximo 24 caracteres.");
+        return;
+    }
 
-         // Verificando se o nome esta vazio
-        if (nome.length() < 4 ) {
-            // Exibir mensagem de erro e não salvar
-            JOptionPane.showMessageDialog(this, "O nome não pode ter menos de 4 caracteres");
-            return;
-        }
-        
-        // Verificando se o nome contém apenas letras e tem no máximo 24 caracteres
-        if (!nome.matches("[a-zA-Z ]+") || nome.length() > 24) {
-            // Exibir mensagem de erro e não salvar
-            JOptionPane.showMessageDialog(this, "O nome deve ter apenas letras e no máximo 24 caracteres.");
-            return;
-        }
+    // Exibindo os valores no console
+    System.out.println("Nome: " + nome);
 
-        // Exibindo os valores no console
-        System.out.println("Nome: " + nome);
+    // Enviando o estado para a API
+    MetodoPagamento metodoPagamento = new MetodoPagamento();
+    boolean salvouComSucesso = metodoPagamento.enviarMetodosPost(nome);
+    
+    if (!salvouComSucesso){
+        // apresenta uma mensagem de erro
+         JOptionPane.showMessageDialog(this, "Erro: Já existe um método de pagamento cadastrado com este nome ou ocorreu um erro ao enviar os dados.");
+        return;
+    }
 
-        // Enviando o estado para a API
-        MetodoPagamento MetodoPagamento = new MetodoPagamento();
-        MetodoPagamento.enviarMetodosPost(nome);
+    var form = new FormListaMetodosPagamento();
+    form.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+    form.setVisible(true);
 
-        var form = new FormListaMetodosPagamento();
-        form.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        form.setVisible(true);
-
-        System.out.println("OnclickSalvar");
-        this.dispose(); // Fechar
+    System.out.println("OnclickSalvar");
+    this.dispose(); // Fechar
     }//GEN-LAST:event_OnclickSalvar
 
     private void OnclickFechar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickFechar
