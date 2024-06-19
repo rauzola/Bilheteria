@@ -90,7 +90,7 @@ public class Usuarios {
                     String cpf = jsonEstado.getString("cpf");
 
                     // Exibir os detalhes do usuario no console
-                    System.out.println("Nome Usuario: " + nome + ", email: " + email + ", ID: " + id + ", cpf: " + cpf);
+                    System.out.println("Usuario: " + nome + ", email: " + email + ", ID: " + id + ", cpf: " + cpf);
 
                     // Criar uma instância de Usuario e adicionar à lista
                     Usuarios usuario = Usuarios.criar(id, nome, email, cpf);

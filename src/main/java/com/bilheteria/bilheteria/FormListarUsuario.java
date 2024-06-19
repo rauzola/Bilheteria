@@ -4,6 +4,10 @@
  */
 package com.bilheteria.bilheteria;
 
+import com.bilheteria.bilheteria.classes.Usuarios;
+import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author raul_
@@ -15,6 +19,7 @@ public class FormListarUsuario extends javax.swing.JFrame {
      */
     public FormListarUsuario() {
         initComponents();
+        carregarDadosUsuarios(); // Carrega os dados dos usuários ao iniciar o formulário
     }
 
     /**
@@ -53,7 +58,7 @@ public class FormListarUsuario extends javax.swing.JFrame {
         jButton1.setText("Novo");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1OnclickNovo(evt);
+                OnclickNovo(evt);
             }
         });
 
@@ -67,7 +72,7 @@ public class FormListarUsuario extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Id", "Nome", "Email", "CPF"
+                "Id", "Nome", "CPF", "Email"
             }
         ));
         jScrollPane3.setViewportView(jTable3);
@@ -141,19 +146,43 @@ public class FormListarUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void OnclickDeletar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickDeletar
-       
+
 
     }//GEN-LAST:event_OnclickDeletar
 
     private void OnclickEditar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickEditar
 
-      
 
     }//GEN-LAST:event_OnclickEditar
 
-    private void jButton1OnclickNovo(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1OnclickNovo
-       
-    }//GEN-LAST:event_jButton1OnclickNovo
+    private void OnclickNovo(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickNovo
+
+
+    }//GEN-LAST:event_OnclickNovo
+
+    // Método para carregar os dados dos usuários utilizando a API
+    private void carregarDadosUsuarios() {
+        // Chama o método da classe Usuarios para carregar os usuários da API
+        java.util.ArrayList<Usuarios> usuarios = Usuarios.carregarUsuarios();
+
+        // Obtém o modelo da tabela
+        DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+
+        // Limpa a tabela antes de adicionar os novos dados
+        model.setRowCount(0);
+
+        // Adiciona os usuários na tabela
+        for (Usuarios usuario : usuarios) {
+            model.addRow(new Object[]{usuario.id, usuario.nome, usuario.email, usuario.cpf});
+        }
+
+        // Atualiza a GUI na Event Dispatch Thread (EDT)
+        SwingUtilities.invokeLater(() -> {
+            jTable3.setModel(model); // Define o modelo atualizado na tabela
+        });
+    }
+    
+    
 
     /**
      * @param args the command line arguments
