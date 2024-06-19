@@ -30,11 +30,17 @@ Tela carregada com dados dinâmicos.
 
 # Trabalho Final – 2ª entrega
 
-12/06
+Entrega dia 19/06.
+
+- Adicionar método PUT e DELETE.
+- Adicionar tela de usuário com todos os métodos anteriores GET, POST, PUT, DELETE
+
+## API de Usuários
+
+- **URL**: [https://api-eventos-unicv.azurewebsites.net/api/usuarios](https://api-eventos-unicv.azurewebsites.net/api/usuarios)
 
 ## Materiais de Apoio
 
 - **GitHub**: [https://github.com/pyasui/unicv-2sem-java](https://github.com/pyasui/unicv-2sem-java)
 - **API (Documentação)**: [https://api-eventos-unicv.azurewebsites.net/swagger/index.html](https://api-eventos-unicv.azurewebsites.net/swagger/index.html)
 - **Exemplo para Consumir os Dados**: [https://naveen-metta.medium.com/mastering-restful-api-calls-in-java-a-comprehensive-guide-b777f911002c](https://naveen-metta.medium.com/mastering-restful-api-calls-in-java-a-comprehensive-guide-b777f911002c)
-
