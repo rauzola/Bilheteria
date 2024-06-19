@@ -93,7 +93,7 @@ public class FormDeletarMetodosPagamento extends javax.swing.JFrame {
         jButton2.setText("Deletar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OnclickSalvar(evt);
+                OnclickDeletar(evt);
             }
         });
 
@@ -138,7 +138,7 @@ public class FormDeletarMetodosPagamento extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void OnclickSalvar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickSalvar
+    private void OnclickDeletar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickDeletar
         int option = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja excluir este método de pagamento?", "Confirmação", JOptionPane.YES_NO_OPTION);
 
         if (option == JOptionPane.YES_OPTION) {
@@ -156,7 +156,7 @@ public class FormDeletarMetodosPagamento extends javax.swing.JFrame {
             form.setVisible(true);
             this.dispose();
         }
-    }//GEN-LAST:event_OnclickSalvar
+    }//GEN-LAST:event_OnclickDeletar
 
     private void OnclickFechar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickFechar
         // Fechar o formulário e abrir a lista de métodos de pagamento

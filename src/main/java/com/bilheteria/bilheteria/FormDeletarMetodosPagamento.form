@@ -139,7 +139,7 @@
         <Property name="text" type="java.lang.String" value="Deletar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="OnclickSalvar"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="OnclickDeletar"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
