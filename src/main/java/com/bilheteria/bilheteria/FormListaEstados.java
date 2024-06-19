@@ -160,6 +160,23 @@ public class FormListaEstados extends javax.swing.JFrame {
 
     private void OnclickDeletar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickDeletar
         // TODO add your handling code here:
+        
+          int linhaSelecionada = jTable1.getSelectedRow();
+        if (linhaSelecionada == -1) {
+            JOptionPane.showMessageDialog(null, "Selecione uma linha");
+            return;
+        }
+
+        // Obtendo os valores da linha selecionada
+        int id = (int) jTable1.getValueAt(linhaSelecionada, 0);
+        String nome = (String) jTable1.getValueAt(linhaSelecionada, 1);
+        String sigla = (String) jTable1.getValueAt(linhaSelecionada, 2);
+         
+        FormDeletarEstados form = new FormDeletarEstados(id, nome, sigla);
+        form.setVisible(true);
+        dispose();
+         
+         
     }//GEN-LAST:event_OnclickDeletar
 
     // Método para personalizar os componentes

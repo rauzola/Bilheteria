@@ -221,5 +221,69 @@ public class Estado {
         return responseStr;
     }
     
+     
+    // Método para editar um estado via DELETE e retornar a resposta da API como uma String
+    public String deletarEstadoDELETE(int id) {
+        String responseStr = "";
+        try {
+            // URL da API de estados, incluindo o ID do estado a ser editado
+            URL url = new URL("https://api-eventos-unicv.azurewebsites.net/api/estados/?id=" + id);
+
+            // Abrir uma conexão HTTP com a URL
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+
+            // Definir o método de requisição como PUT
+            con.setRequestMethod("DELETE");
+
+            // Definir o tipo de mídia como application/json
+            con.setRequestProperty("Content-Type", "application/json");
+
+            // Habilitar envio de dados
+            con.setDoOutput(true);
+            
+          
+            
+            // Criar o corpo da requisição JSON
+            JSONObject jsonBody = new JSONObject();
+            
+
+            // Obter o OutputStream da conexão
+            OutputStream os = con.getOutputStream();
+            os.write(jsonBody.toString().getBytes());
+            os.flush();
+            os.close();
+
+            // Obter o código de resposta da requisição
+            int responseCode = con.getResponseCode();
+
+            // Verificar se a resposta é HTTP OK (código 200)
+            BufferedReader in;
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                System.out.println("Estado atualizado com sucesso!");
+            } else {
+                in = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+                System.out.println("Erro ao atualizar o estado!");
+                System.out.println("Código de resposta: " + responseCode);
+            }
+            
+            // Ler a resposta da API
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+
+            responseStr = response.toString();
+            System.out.println("Resposta da API: " + responseStr);
+
+        } catch (Exception e) {
+            // Tratar exceções e exibir a stack trace
+            e.printStackTrace();
+        }
+        return responseStr;
+    }
+    
     
 }
