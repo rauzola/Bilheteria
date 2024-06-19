@@ -2,6 +2,7 @@ package com.bilheteria.bilheteria;
 
 import com.bilheteria.bilheteria.classes.MetodoPagamento;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -33,6 +34,8 @@ public class FormListaMetodosPagamento extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaDados = new javax.swing.JTable();
+        OnclickEditar = new javax.swing.JButton();
+        OnclickDeletar = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -107,6 +110,20 @@ public class FormListaMetodosPagamento extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        OnclickEditar.setText("Editar");
+        OnclickEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OnclickEditar(evt);
+            }
+        });
+
+        OnclickDeletar.setText("Deletar");
+        OnclickDeletar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OnclickDeletar(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -115,7 +132,11 @@ public class FormListaMetodosPagamento extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 313, Short.MAX_VALUE)
+                        .addGap(0, 157, Short.MAX_VALUE)
+                        .addComponent(OnclickDeletar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(OnclickEditar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1))
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -124,7 +145,11 @@ public class FormListaMetodosPagamento extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(OnclickEditar)
+                        .addComponent(OnclickDeletar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -157,6 +182,32 @@ public class FormListaMetodosPagamento extends javax.swing.JFrame {
 
         this.tabelaDados.setModel(modelo); // Define o modelo de dados da tabela
     }//GEN-LAST:event_formWindowOpened
+
+    private void OnclickEditar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickEditar
+
+         int linhaSelecionada = tabelaDados.getSelectedRow();
+    if (linhaSelecionada == -1) {
+        JOptionPane.showMessageDialog(null, "Selecione uma linha");
+        return;
+    }
+
+    // Obtendo os valores da linha selecionada
+    int id = (int) tabelaDados.getValueAt(linhaSelecionada, 0);
+    String nome = (String) tabelaDados.getValueAt(linhaSelecionada, 1);
+    
+    // Abrindo o formulário de edição com os parâmetros id e nome
+    var form = new FormEditarMetodosPagamento(id, nome);
+    form.setDefaultCloseOperation(DISPOSE_ON_CLOSE); 
+    form.setVisible(true);
+    this.dispose(); // Fecha a tela atual
+
+    }//GEN-LAST:event_OnclickEditar
+
+    private void OnclickDeletar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickDeletar
+        // TODO add your handling code here:
+
+
+    }//GEN-LAST:event_OnclickDeletar
 
     /**
      * @param args the command line arguments
@@ -195,6 +246,8 @@ public class FormListaMetodosPagamento extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton OnclickDeletar;
+    private javax.swing.JButton OnclickEditar;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
