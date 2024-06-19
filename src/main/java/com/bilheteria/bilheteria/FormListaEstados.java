@@ -2,6 +2,7 @@ package com.bilheteria.bilheteria;
 
 import com.bilheteria.bilheteria.classes.Estado;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -39,6 +40,8 @@ public class FormListaEstados extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        OnclickEditar = new javax.swing.JButton();
+        OnclickDeletar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Lista de Estados");
@@ -79,6 +82,20 @@ public class FormListaEstados extends javax.swing.JFrame {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
         );
 
+        OnclickEditar.setText("Editar");
+        OnclickEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OnclickEditar(evt);
+            }
+        });
+
+        OnclickDeletar.setText("Deletar");
+        OnclickDeletar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OnclickDeletar(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -87,7 +104,11 @@ public class FormListaEstados extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 348, Short.MAX_VALUE)
+                        .addGap(0, 192, Short.MAX_VALUE)
+                        .addComponent(OnclickDeletar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(OnclickEditar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1))
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -96,7 +117,10 @@ public class FormListaEstados extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(OnclickEditar)
+                    .addComponent(OnclickDeletar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -112,6 +136,27 @@ public class FormListaEstados extends javax.swing.JFrame {
         
         this.dispose();
     }//GEN-LAST:event_OnclickNovo
+
+    private void OnclickEditar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickEditar
+        
+          int selectedRow = jTable1.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Por favor, selecione um estado para editar.");
+            return;
+        }
+
+        // Obtendo os valores da linha selecionada
+        int id = (int) jTable1.getValueAt(selectedRow, 0);
+        String nome = (String) jTable1.getValueAt(selectedRow, 1);
+        String sigla = (String) jTable1.getValueAt(selectedRow, 2);
+
+       System.out.println("id: " + id + " nome: " + nome + " sigla: " + sigla);
+        
+    }//GEN-LAST:event_OnclickEditar
+
+    private void OnclickDeletar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickDeletar
+        // TODO add your handling code here:
+    }//GEN-LAST:event_OnclickDeletar
 
     // Método para personalizar os componentes
     private void customizarComponentes() {
@@ -174,6 +219,8 @@ public class FormListaEstados extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton OnclickDeletar;
+    private javax.swing.JButton OnclickEditar;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
