@@ -172,11 +172,15 @@ public class FormEditarEstados extends javax.swing.JFrame {
         textNome.setText(nome);
         textSigla.setText(sigla);
         
+       
+        
         System.out.println("id: " + id + " nome: " + nome + " sigla: " + sigla);
     }
     
     private void OnclickSigla(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickSigla
         // TODO add your handling code here:
+        
+        
     }//GEN-LAST:event_OnclickSigla
 
     private void OnclickNome(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickNome
@@ -185,20 +189,78 @@ public class FormEditarEstados extends javax.swing.JFrame {
 
     private void OnclickSalvar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickSalvar
 
-           // Captura os dados do formulário
-        int id = Integer.parseInt(labelId.getText());
-        String sigla = textSigla.getText();
-        String nome = textNome.getText();
+    // Captura os dados do formulário
+    int id = Integer.parseInt(labelId.getText());
+    String sigla = textSigla.getText();
+    String nome = textNome.getText();
+    
+    // Verificando se a sigla e o nome estão vazios
+    if (sigla.isEmpty() || nome.isEmpty()) {
+        // Exibir mensagem de erro e não salvar
+        JOptionPane.showMessageDialog(this, "A sigla e o nome não podem estar vazios.");
+        return;
+    }
 
-      // Criar uma instância de Estado e chamar o método PUT
-        Estado estado = new Estado();
-        estado.editarEstadoPUT(id, sigla, nome);
+    // Verificando se a sigla possui exatamente 2 caracteres e são letras
+    if (sigla.length() != 2 || !sigla.matches("[a-zA-Z]+")) {
+        // Exibir mensagem de erro e não salvar
+        JOptionPane.showMessageDialog(this, "A sigla deve ter exatamente 2 letras.");
+        return;
+    }
 
+    // Verificando se o nome contém apenas letras e tem no máximo 24 caracteres
+    if (!nome.matches("[a-zA-Z ]+") || nome.length() > 24) {
+        // Exibir mensagem de erro e não salvar
+        JOptionPane.showMessageDialog(this, "O nome deve ter apenas letras e no máximo 24 caracteres.");
+        return;
+    }
+    
+    // Criar uma instância de Estado e chamar o método PUT
+    Estado estado = new Estado();
+    String response = estado.editarEstadoPUT(id, sigla, nome);
+    
+    // Processar a resposta da API
+    // Aqui você pode atualizar a UI ou realizar outras ações com base na resposta
+    System.out.println("Resposta recebida no FormEditarEstados: " + response);
+
+    // Verificar e exibir mensagem baseada na resposta da API
+    if (response != null) {
+        if (response.equals("sucesso")) {
+            // Exibir mensagem de sucesso
+            JOptionPane.showMessageDialog(this, "Estado atualizado com sucesso!");
+
+            // Fechar o formulário atual e abrir o FormListaEstados
+            FormListaEstados form = new FormListaEstados();
+            form.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            form.setVisible(true);
+            this.dispose(); // Fechar o formulário atual
+        } else {
+            // Exibir mensagem de erro específica retornada pela API
+           // JOptionPane.showMessageDialog(this, "" + response);
+        }
+    } else {
+        // Exibir mensagem de erro genérica (caso response seja null)
+        JOptionPane.showMessageDialog(this, "Erro ao atualizar o estado. Tente novamente.");
+    }
+    
+    var form = new FormListaEstados();
+        form.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        form.setVisible(true);
+
+        System.out.println("OnclickFechar");
+
+        this.dispose(); // Fechar
         
     }//GEN-LAST:event_OnclickSalvar
 
     private void OnclickFechar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickFechar
-      
+       var form = new FormListaEstados();
+        form.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        form.setVisible(true);
+
+        System.out.println("OnclickFechar");
+
+        this.dispose(); // Fechar
     }//GEN-LAST:event_OnclickFechar
 
     /**
