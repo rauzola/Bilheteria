@@ -1,5 +1,6 @@
 com\bilheteria\bilheteria\FormGerenciarEstados$2.class
 com\bilheteria\bilheteria\FormListaEstados$3.class
+com\bilheteria\bilheteria\FormEditarEstados$4.class
 com\bilheteria\bilheteria\FormHome.class
 com\bilheteria\bilheteria\FormGerenciarMetodosPagamento.class
 com\bilheteria\bilheteria\FormListaMetodosPagamento$1.class
@@ -9,6 +10,9 @@ com\bilheteria\bilheteria\FormGerenciarEstados.class
 com\bilheteria\bilheteria\FormHome$2.class
 com\bilheteria\bilheteria\FormListaMetodosPagamento$3.class
 com\bilheteria\bilheteria\FormListaEstados$2.class
+com\bilheteria\bilheteria\FormEditarEstados$1.class
+com\bilheteria\bilheteria\FormEditarEstados$5.class
+com\bilheteria\bilheteria\FormEditarEstados.class
 com\bilheteria\bilheteria\FormGerenciarMetodosPagamento$3.class
 com\bilheteria\bilheteria\FormGerenciarEstados$1.class
 com\bilheteria\bilheteria\FormListaEstados.class
@@ -16,7 +20,9 @@ com\bilheteria\bilheteria\FormGerenciarEstados$3.class
 com\bilheteria\bilheteria\ProjetoBilheteria.class
 com\bilheteria\bilheteria\Classes\Estado.class
 com\bilheteria\bilheteria\FormListaMetodosPagamento.class
+com\bilheteria\bilheteria\FormEditarEstados$3.class
 com\bilheteria\bilheteria\FormListaEstados$4.class
+com\bilheteria\bilheteria\FormEditarEstados$2.class
 com\bilheteria\bilheteria\FormListaMetodosPagamento$4.class
 com\bilheteria\bilheteria\FormGerenciarMetodosPagamento$1.class
 com\bilheteria\bilheteria\Classes\MetodoPagamento.class

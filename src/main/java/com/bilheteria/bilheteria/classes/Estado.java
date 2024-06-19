@@ -155,4 +155,74 @@ public class Estado {
         }
     }
 
+    
+     // Método para editar um estado via PUT
+    public void editarEstadoPUT(int id, String sigla, String nome) {
+        try {
+            // URL da API de estados, incluindo o ID do estado a ser editado
+            URL url = new URL("https://api-eventos-unicv.azurewebsites.net/api/estados/?id=" + id);
+
+            // Abrir uma conexão HTTP com a URL
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+
+            // Definir o método de requisição como PUT
+            con.setRequestMethod("PUT");
+
+            // Definir o tipo de mídia como application/json
+            con.setRequestProperty("Content-Type", "application/json");
+
+            // Habilitar envio de dados
+            con.setDoOutput(true);
+            
+            System.out.println("id: " + id + " nome: " + nome + " sigla: " + sigla);
+            
+            // Criar o corpo da requisição JSON
+            JSONObject jsonBody = new JSONObject();
+            jsonBody.put("name", nome);
+            jsonBody.put("acronym", sigla);
+
+            // Obter o OutputStream da conexão
+            OutputStream os = con.getOutputStream();
+            os.write(jsonBody.toString().getBytes());
+            os.flush();
+            os.close();
+
+            // Obter o código de resposta da requisição
+            int responseCode = con.getResponseCode();
+
+            // Verificar se a resposta é HTTP OK (código 200)
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                // Ler a resposta da API
+                BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                String inputLine;
+                StringBuffer response = new StringBuffer();
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+
+                System.out.println("Estado atualizado com sucesso!");
+                System.out.println("Resposta da API: " + response.toString());
+            } else {
+                // Ler a resposta da API em caso de erro
+                BufferedReader in = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+                String inputLine;
+                StringBuffer response = new StringBuffer();
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+
+                System.out.println("Erro ao atualizar o estado!");
+                System.out.println("Código de resposta: " + responseCode);
+                System.out.println("Resposta da API: " + response.toString());
+            }
+        } catch (Exception e) {
+            // Tratar exceções e exibir a stack trace
+            e.printStackTrace();
+        }
+    }
+    
+    
+    
 }

@@ -139,18 +139,22 @@ public class FormListaEstados extends javax.swing.JFrame {
 
     private void OnclickEditar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickEditar
         
-          int selectedRow = jTable1.getSelectedRow();
-        if (selectedRow == -1) {
-            JOptionPane.showMessageDialog(this, "Por favor, selecione um estado para editar.");
+         int linhaSelecionada = jTable1.getSelectedRow();
+        if (linhaSelecionada == -1) {
+            JOptionPane.showMessageDialog(null, "Selecione uma linha");
             return;
         }
 
         // Obtendo os valores da linha selecionada
-        int id = (int) jTable1.getValueAt(selectedRow, 0);
-        String nome = (String) jTable1.getValueAt(selectedRow, 1);
-        String sigla = (String) jTable1.getValueAt(selectedRow, 2);
+         int id = (int) jTable1.getValueAt(linhaSelecionada, 0);
+        String nome = (String) jTable1.getValueAt(linhaSelecionada, 1);
+        String sigla = (String) jTable1.getValueAt(linhaSelecionada, 2);
 
-       System.out.println("id: " + id + " nome: " + nome + " sigla: " + sigla);
+       // System.out.println("id: " + id + " nome: " + nome + " sigla: " + sigla);
+       
+        FormEditarEstados form = new FormEditarEstados(id, nome, sigla);
+        form.setVisible(true);
+        dispose();
         
     }//GEN-LAST:event_OnclickEditar
 
