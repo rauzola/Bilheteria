@@ -9,7 +9,6 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author raul_
  */
-
 public class FormListaMetodosPagamento extends javax.swing.JFrame {
 
     public ArrayList<MetodoPagamento> linhas = null;
@@ -145,11 +144,11 @@ public class FormListaMetodosPagamento extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(OnclickEditar)
-                        .addComponent(OnclickDeletar)))
+                        .addComponent(OnclickDeletar))
+                    .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -163,7 +162,7 @@ public class FormListaMetodosPagamento extends javax.swing.JFrame {
         var form = new FormGerenciarMetodosPagamento(); // Cria um novo formulário para gerenciar métodos de pagamento
         form.setDefaultCloseOperation(DISPOSE_ON_CLOSE); // Define a ação de fechamento do formulário
         form.setVisible(true); // Torna o formulário visível
-        
+
         this.dispose();
     }//GEN-LAST:event_OnclickNovo
 
@@ -185,26 +184,38 @@ public class FormListaMetodosPagamento extends javax.swing.JFrame {
 
     private void OnclickEditar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickEditar
 
-         int linhaSelecionada = tabelaDados.getSelectedRow();
-    if (linhaSelecionada == -1) {
-        JOptionPane.showMessageDialog(null, "Selecione uma linha");
-        return;
-    }
+        int linhaSelecionada = tabelaDados.getSelectedRow();
+        if (linhaSelecionada == -1) {
+            JOptionPane.showMessageDialog(null, "Selecione uma linha");
+            return;
+        }
 
-    // Obtendo os valores da linha selecionada
-    int id = (int) tabelaDados.getValueAt(linhaSelecionada, 0);
-    String nome = (String) tabelaDados.getValueAt(linhaSelecionada, 1);
-    
-    // Abrindo o formulário de edição com os parâmetros id e nome
-    var form = new FormEditarMetodosPagamento(id, nome);
-    form.setDefaultCloseOperation(DISPOSE_ON_CLOSE); 
-    form.setVisible(true);
-    this.dispose(); // Fecha a tela atual
+        // Obtendo os valores da linha selecionada
+        int id = (int) tabelaDados.getValueAt(linhaSelecionada, 0);
+        String nome = (String) tabelaDados.getValueAt(linhaSelecionada, 1);
+
+        // Abrindo o formulário de edição com os parâmetros id e nome
+        var form = new FormEditarMetodosPagamento(id, nome);
+        form.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        form.setVisible(true);
+        this.dispose(); // Fecha a tela atual
 
     }//GEN-LAST:event_OnclickEditar
 
     private void OnclickDeletar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickDeletar
-        // TODO add your handling code here:
+        int linhaSelecionada = tabelaDados.getSelectedRow();
+        if (linhaSelecionada == -1) {
+            JOptionPane.showMessageDialog(null, "Selecione uma linha");
+            return;
+        }
+
+        int id = (int) tabelaDados.getValueAt(linhaSelecionada, 0);
+        String nome = (String) tabelaDados.getValueAt(linhaSelecionada, 1);
+
+        var form = new FormDeletarMetodosPagamento(id, nome);
+        form.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        form.setVisible(true);
+        this.dispose();
 
 
     }//GEN-LAST:event_OnclickDeletar
