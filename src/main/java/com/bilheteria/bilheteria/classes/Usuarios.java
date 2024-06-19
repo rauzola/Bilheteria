@@ -6,6 +6,7 @@ package com.bilheteria.bilheteria.classes;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class Usuarios {
     public String cpf;
 
     // Método estático para criar uma instância de Usuario
-    public static Usuarios criar(int pId, String pNome, String pCpf, String pEmail ) {
+    public static Usuarios criar(int pId, String pNome, String pCpf, String pEmail) {
         Usuarios objeto = new Usuarios();
         objeto.id = pId;
         objeto.nome = pNome;
@@ -85,7 +86,7 @@ public class Usuarios {
 
                     // Obter a email do usuario
                     String email = jsonEstado.getString("email");
-                    
+
                     // Obter a cpf do usuario
                     String cpf = jsonEstado.getString("cpf");
 
@@ -108,5 +109,5 @@ public class Usuarios {
         return usuarios;
     }
 
-    
+   
 }

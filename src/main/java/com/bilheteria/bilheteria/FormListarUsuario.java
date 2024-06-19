@@ -146,17 +146,29 @@ public class FormListarUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void OnclickDeletar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickDeletar
+        var form = new FormDeletarUsuario(); // Cria um novo formulário para gerenciar estados
+        form.setDefaultCloseOperation(DISPOSE_ON_CLOSE); // Define a ação de fechamento do formulário
+        form.setVisible(true); // Torna o formulário visível
 
+        this.dispose();
 
     }//GEN-LAST:event_OnclickDeletar
 
     private void OnclickEditar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickEditar
+        var form = new FormEditarUsuario(); // Cria um novo formulário para gerenciar estados
+        form.setDefaultCloseOperation(DISPOSE_ON_CLOSE); // Define a ação de fechamento do formulário
+        form.setVisible(true); // Torna o formulário visível
 
+        this.dispose();
 
     }//GEN-LAST:event_OnclickEditar
 
     private void OnclickNovo(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickNovo
+        var form = new FormGerenciarUsuario(); // Cria um novo formulário para gerenciar estados
+        form.setDefaultCloseOperation(DISPOSE_ON_CLOSE); // Define a ação de fechamento do formulário
+        form.setVisible(true); // Torna o formulário visível
 
+        this.dispose();
 
     }//GEN-LAST:event_OnclickNovo
 
@@ -181,8 +193,6 @@ public class FormListarUsuario extends javax.swing.JFrame {
             jTable3.setModel(model); // Define o modelo atualizado na tabela
         });
     }
-    
-    
 
     /**
      * @param args the command line arguments

@@ -1,5 +1,6 @@
 C:\www\Bilheteria\src\main\java\com\bilheteria\bilheteria\ProjetoBilheteria.java
 C:\www\Bilheteria\src\main\java\com\bilheteria\bilheteria\classes\MetodoPagamento.java
+C:\www\Bilheteria\src\main\java\com\bilheteria\bilheteria\FormEditarUsuario.java
 C:\www\Bilheteria\src\main\java\com\bilheteria\bilheteria\FormEditarMetodosPagamento.java
 C:\www\Bilheteria\src\main\java\com\bilheteria\bilheteria\FormGerenciarMetodosPagamento.java
 C:\www\Bilheteria\src\main\java\com\bilheteria\bilheteria\classes\Usuarios.java
@@ -8,6 +9,8 @@ C:\www\Bilheteria\src\main\java\com\bilheteria\bilheteria\FormDeletarMetodosPaga
 C:\www\Bilheteria\src\main\java\com\bilheteria\bilheteria\FormEditarEstados.java
 C:\www\Bilheteria\src\main\java\com\bilheteria\bilheteria\FormListaMetodosPagamento.java
 C:\www\Bilheteria\src\main\java\com\bilheteria\bilheteria\FormGerenciarEstados.java
+C:\www\Bilheteria\src\main\java\com\bilheteria\bilheteria\FormDeletarUsuario.java
+C:\www\Bilheteria\src\main\java\com\bilheteria\bilheteria\FormGerenciarUsuario.java
 C:\www\Bilheteria\src\main\java\com\bilheteria\bilheteria\classes\Estado.java
 C:\www\Bilheteria\src\main\java\com\bilheteria\bilheteria\FormListaEstados.java
 C:\www\Bilheteria\src\main\java\com\bilheteria\bilheteria\FormListarUsuario.java
