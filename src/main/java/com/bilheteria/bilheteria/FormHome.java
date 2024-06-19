@@ -29,6 +29,7 @@ public class FormHome extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        Usuarios = new javax.swing.JMenuItem();
 
         jMenuItem2.setText("jMenuItem2");
 
@@ -52,6 +53,14 @@ public class FormHome extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItem3);
+
+        Usuarios.setText("Usuarios");
+        Usuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OnclickUsuarios(evt);
+            }
+        });
+        jMenu1.add(Usuarios);
 
         jMenuBar1.add(jMenu1);
 
@@ -86,6 +95,15 @@ public class FormHome extends javax.swing.JFrame {
         
         // this.dispose(); // Fechar
     }//GEN-LAST:event_OnclickEstados
+
+    private void OnclickUsuarios(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickUsuarios
+        // TODO add your handling code here:
+        var form = new FormListarUsuario();
+        form.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        form.setVisible(true);
+        
+        // this.dispose(); // Fechar
+    }//GEN-LAST:event_OnclickUsuarios
 
     /**
      * @param args the command line arguments
@@ -123,6 +141,7 @@ public class FormHome extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Usuarios;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
