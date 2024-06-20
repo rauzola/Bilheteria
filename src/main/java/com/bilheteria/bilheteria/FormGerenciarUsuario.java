@@ -165,7 +165,7 @@ public class FormGerenciarUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void OnclickFechar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickFechar
-       
+
         var form = new FormListarUsuario();
         form.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         form.setVisible(true);
@@ -173,42 +173,50 @@ public class FormGerenciarUsuario extends javax.swing.JFrame {
         System.out.println("OnclickFechar");
 
         this.dispose(); // Fechar
-        
-        
+
+
     }//GEN-LAST:event_OnclickFechar
 
     private void OnclickSalvar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickSalvar
-         // Pegando os valores digitados nos campos de texto
+        // Pegando os valores digitados nos campos de texto
         String cpf = textNome.getText();
         String nome = textSigla.getText();
         String email = textNome1.getText();
-
-        // Verificando se os campos obrigatórios estão preenchidos
+// Verificando se os campos obrigatórios estão preenchidos
         if (nome.isEmpty() || email.isEmpty() || cpf.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor, preencha todos os campos obrigatórios.");
+            return;
+        }
+
+        // Validando o email usando uma expressão regular simples
+        if (!isValidEmail(email)) {
+            JOptionPane.showMessageDialog(this, "Email inválido. Por favor, digite um email válido.");
             return;
         }
 
         // Exibindo os valores no console (pode ser removido posteriormente)
         System.out.println("Nome: " + nome + "\nEmail: " + email + "\nCPF: " + cpf);
 
+        // Enviando os dados para a API (exemplo)
+        Usuarios usuario = new Usuarios();
+        usuario.enviarUsuariosPost(nome, email, cpf);
 
-        // Enviando o estado para a API
-        Usuarios estado = new Usuarios();
-        estado.enviarUsuariosPost(nome, email, cpf);
-        // Aqui você deve enviar os dados para a API para salvar o novo usuário
-        // Exemplo de chamada à classe de usuários para salvar o usuário
-        
-        var form = new FormListarUsuario();
+        // Fechar este formulário e abrir o formulário de listagem de usuários
+        FormListarUsuario form = new FormListarUsuario();
         form.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         form.setVisible(true);
-
-        System.out.println("OnclickFechar");
-
         this.dispose(); // Fechar
-      
-      
+
+
     }//GEN-LAST:event_OnclickSalvar
+
+    // Método auxiliar para validar email usando expressão regular
+    private boolean isValidEmail(String email) {
+        // Expressão regular simples para validar email
+        String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
+        return email.matches(regex);
+    }
+
 
     private void textNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textNomeActionPerformed
         // TODO add your handling code here:

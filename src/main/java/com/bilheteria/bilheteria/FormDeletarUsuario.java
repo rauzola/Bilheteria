@@ -216,7 +216,7 @@ public class FormDeletarUsuario extends javax.swing.JFrame {
             }
 
             // Fechar este formulário e abrir o formulário de listagem de estados
-            FormListaEstados form = new FormListaEstados();
+            FormListarUsuario form = new FormListarUsuario();
             form.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
             form.setVisible(true);
 
@@ -256,7 +256,7 @@ public class FormDeletarUsuario extends javax.swing.JFrame {
             }
 
             // Fechar este formulário e abrir o formulário de listagem de estados
-            FormListaEstados form = new FormListaEstados();
+            FormListarUsuario form = new FormListarUsuario();
             form.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
             form.setVisible(true);
 
