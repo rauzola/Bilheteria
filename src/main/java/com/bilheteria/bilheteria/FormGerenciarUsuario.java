@@ -193,8 +193,19 @@ public class FormGerenciarUsuario extends javax.swing.JFrame {
         System.out.println("Nome: " + nome + "\nEmail: " + email + "\nCPF: " + cpf);
 
 
+        // Enviando o estado para a API
+        Usuarios estado = new Usuarios();
+        estado.enviarUsuariosPost(nome, email, cpf);
         // Aqui você deve enviar os dados para a API para salvar o novo usuário
         // Exemplo de chamada à classe de usuários para salvar o usuário
+        
+        var form = new FormListarUsuario();
+        form.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        form.setVisible(true);
+
+        System.out.println("OnclickFechar");
+
+        this.dispose(); // Fechar
       
       
     }//GEN-LAST:event_OnclickSalvar

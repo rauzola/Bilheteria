@@ -5,6 +5,7 @@
 package com.bilheteria.bilheteria;
 
 import com.bilheteria.bilheteria.classes.Usuarios;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
@@ -72,7 +73,7 @@ public class FormListarUsuario extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Id", "Nome", "CPF", "Email"
+                "Id", "Nome", "Email", "CPF"
             }
         ));
         jScrollPane3.setViewportView(jTable3);
@@ -146,7 +147,24 @@ public class FormListarUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void OnclickDeletar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickDeletar
-        var form = new FormDeletarUsuario(); // Cria um novo formulário para gerenciar estados
+       
+         // TODO add your handling code here:
+        
+          int linhaSelecionada = jTable3.getSelectedRow();
+        if (linhaSelecionada == -1) {
+            JOptionPane.showMessageDialog(null, "Selecione uma linha");
+            return;
+        }
+
+        // Obtendo os valores da linha selecionada
+        int id = (int) jTable3.getValueAt(linhaSelecionada, 0);
+        String nome = (String) jTable3.getValueAt(linhaSelecionada, 1);
+        String email = (String) jTable3.getValueAt(linhaSelecionada, 2);
+        String cpf = (String) jTable3.getValueAt(linhaSelecionada, 3);
+
+        
+        
+        var form = new FormDeletarUsuario(id, nome, email, cpf); // Cria um novo formulário para gerenciar estados
         form.setDefaultCloseOperation(DISPOSE_ON_CLOSE); // Define a ação de fechamento do formulário
         form.setVisible(true); // Torna o formulário visível
 
@@ -155,7 +173,20 @@ public class FormListarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_OnclickDeletar
 
     private void OnclickEditar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnclickEditar
-        var form = new FormEditarUsuario(); // Cria um novo formulário para gerenciar estados
+
+        int linhaSelecionada = jTable3.getSelectedRow();
+        if (linhaSelecionada == -1) {
+            JOptionPane.showMessageDialog(null, "Selecione uma linha");
+            return;
+        }
+
+        // Obtendo os valores da linha selecionada na jTable3
+        int id = (int) jTable3.getValueAt(linhaSelecionada, 0);
+        String nome = (String) jTable3.getValueAt(linhaSelecionada, 1);
+        String cpf = (String) jTable3.getValueAt(linhaSelecionada, 2);
+        String email = (String) jTable3.getValueAt(linhaSelecionada, 3);
+
+        FormEditarUsuario form = new FormEditarUsuario(id, nome, cpf, email);
         form.setDefaultCloseOperation(DISPOSE_ON_CLOSE); // Define a ação de fechamento do formulário
         form.setVisible(true); // Torna o formulário visível
 
@@ -234,14 +265,8 @@ public class FormListarUsuario extends javax.swing.JFrame {
     private javax.swing.JButton OnclickEditar;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     // End of variables declaration//GEN-END:variables
 }

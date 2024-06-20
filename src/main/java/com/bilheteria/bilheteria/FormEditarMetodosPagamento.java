@@ -162,7 +162,7 @@ public class FormEditarMetodosPagamento extends javax.swing.JFrame {
         }
 
         // Verificando se o nome contém apenas letras e tem no máximo 24 caracteres
-        if (!nome.matches("[a-zA-Z ]+") || nome.length() > 24) {
+        if (!nome.matches("[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+") || nome.length() > 24) {
             // Exibir mensagem de erro e não salvar
             JOptionPane.showMessageDialog(this, "O nome deve ter apenas letras e no máximo 24 caracteres.");
             return;
